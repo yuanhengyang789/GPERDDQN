@@ -68,6 +68,48 @@ def generate_map(size=20, obstacle_ratio=0.2):
     map_array[12, 0] = 1
     map_array[12, 1] = 1
     map_array[12, 2] = 1
+    # 示例 12：你可以添加其他障碍物
+    map_array[19, 6] = 1
+    map_array[19, 7] = 1
+    map_array[19, 8] = 1
+    map_array[18, 4] = 1
+    map_array[18, 5] = 1
+    map_array[18, 6] = 1
+    # 示例 13：你可以添加其他障碍物
+    map_array[3, 14] = 1
+    map_array[4, 14] = 1
+    map_array[5, 14] = 1
+    # 示例 14：你可以添加其他障碍物
+    map_array[17, 10] = 1
+    map_array[17, 9] = 1
+    map_array[16, 10] = 1
+    map_array[16, 9] = 1
+    map_array[17, 11] = 1
+    map_array[16, 11] = 1
+   # 示例 15：你可以添加其他障碍物
+    map_array[2, 9] = 1
+    map_array[2, 10] = 1
+    map_array[2, 11] = 1
+    # 示例 16：你可以添加其他障碍物
+    map_array[12, 13] = 1
+    map_array[12, 12] = 1
+    map_array[12, 11] = 1
+    # 示例 17：你可以添加其他障碍物
+    map_array[9, 18] = 1
+    map_array[9, 19] = 1
+    # 示例 18：你可以添加其他障碍物
+    map_array[2, 2] = 1
+    map_array[1, 2] = 1
+    map_array[0, 2] = 1
+    # 示例 19：你可以添加其他障碍物
+    map_array[17, 0] = 1
+    map_array[16, 0] = 1
+    map_array[10, 0] = 1
+    map_array[11, 0] = 1
+    map_array[9, 0] = 1
+    # 示例 19：你可以添加其他障碍物
+    map_array[12, 8] = 1
+    map_array[12, 9] = 1
     return map_array
 
 def show_map(map_array):

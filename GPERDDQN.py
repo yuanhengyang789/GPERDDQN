@@ -11,20 +11,117 @@ import time
 from queue import Queue
 import scipy.interpolate as interpolate
 import matplotlib.pyplot as plt
-
+import numpy as npt
 def generate_map(size=20, obstacle_ratio=0.2):
-    # 固定地图初始化
-    map_array = np.zeros((size, size), dtype=np.float32)
-    start_pos = (size - 1, 0)
-    target_pos = (0, size - 1)
-
-    # 固定障碍物：例如，竖直障碍墙
+    global start_pos, target_pos
+    map_array = npt.zeros((size, size), dtype=npt.float32)  # 初始化为全空地
+    start_pos = (size - 1, 0)  # 左下角
+    target_pos = (0, size - 1)  # 右上角
+    # 示例 1：竖直墙体，开口在第10行
     for i in range(5, 15):
-        map_array[i, 10] = 1  # 在第10列放置一堵墙
+        map_array[i, 10] = 1
+    map_array[10, 10] = 0  # 开一个口
+    for i in range(1, 10):
+        map_array[i, 6] = 1
+    map_array[10, 9] = 0  # 开一个口
+    # 示例 2：你可以添加其他障碍物
+    map_array[8, 5] = 1
+    map_array[9, 5] = 1
+    map_array[10, 5] = 1
+    # 示例 3：你可以添加其他障碍物
+    map_array[8, 6] = 1
+    map_array[9, 6] = 1
+    map_array[10, 6] = 1
+    # 示例 4：你可以添加其他障碍物
+    map_array[8, 14] = 1
+    map_array[9, 14] = 1
+    map_array[10, 14] = 1
+    map_array[8, 15] = 1
+    map_array[9, 15] = 1
+    map_array[10, 15] = 1
+    # 示例 5：你可以添加其他障碍物
+    map_array[16, 3] = 1
+    map_array[16, 4] = 1
+    map_array[16, 5] = 1
+    map_array[15, 3] = 1
+    map_array[15, 4] = 1
+    map_array[15, 5] = 1
+    # 示例 6：你可以添加其他障碍物
+    map_array[1, 13] = 1
+    map_array[1, 14] = 1
+    map_array[1, 15] = 1
+    map_array[0, 13] = 1
+    map_array[0, 14] = 1
+    map_array[0, 15] = 1
+    # 示例 7：你可以添加其他障碍物
+    map_array[18, 13] = 1
+    map_array[18, 14] = 1
+    map_array[18, 15] = 1
+    map_array[18, 16] = 1
+    map_array[19, 13] = 1
 
-    # 给障碍开一个口（确保有路径）
-    map_array[10, 10] = 0
-
+    # 示例 8：你可以添加其他障碍物
+    map_array[15, 16] = 1
+    map_array[15, 17] = 1
+    map_array[15, 18] = 1
+    map_array[15, 19] = 1
+    map_array[14, 16] = 1
+    map_array[14, 17] = 1
+    map_array[14, 18] = 1
+    map_array[14, 19] = 1
+    # 示例 9：你可以添加其他障碍物
+    map_array[5, 17] = 1
+    map_array[5, 18] = 1
+    map_array[5, 19] = 1
+    # 示例 10：你可以添加其他障碍物
+    map_array[5, 0] = 1
+    map_array[5, 1] = 1
+    # 示例 11：你可以添加其他障碍物
+    map_array[12, 0] = 1
+    map_array[12, 1] = 1
+    map_array[12, 2] = 1
+    # 示例 12：你可以添加其他障碍物
+    map_array[19, 6] = 1
+    map_array[19, 7] = 1
+    map_array[19, 8] = 1
+    map_array[18, 4] = 1
+    map_array[18, 5] = 1
+    map_array[18, 6] = 1
+    # 示例 13：你可以添加其他障碍物
+    map_array[3, 14] = 1
+    map_array[4, 14] = 1
+    map_array[5, 14] = 1
+    # 示例 14：你可以添加其他障碍物
+    map_array[17, 10] = 1
+    map_array[17, 9] = 1
+    map_array[16, 10] = 1
+    map_array[16, 9] = 1
+    map_array[17, 11] = 1
+    map_array[16, 11] = 1
+   # 示例 15：你可以添加其他障碍物
+    map_array[2, 9] = 1
+    map_array[2, 10] = 1
+    map_array[2, 11] = 1
+    # 示例 16：你可以添加其他障碍物
+    map_array[12, 13] = 1
+    map_array[12, 12] = 1
+    map_array[12, 11] = 1
+    # 示例 17：你可以添加其他障碍物
+    map_array[9, 18] = 1
+    map_array[9, 19] = 1
+    # 示例 18：你可以添加其他障碍物
+    map_array[2, 2] = 1
+    map_array[1, 2] = 1
+    map_array[0, 2] = 1
+    # 示例 19：你可以添加其他障碍物
+    map_array[17, 0] = 1
+    map_array[16, 0] = 1
+    map_array[10, 0] = 1
+    map_array[11, 0] = 1
+    map_array[9, 0] = 1
+    # 示例 19：你可以添加其他障碍物
+    map_array[12, 8] = 1
+    map_array[12, 9] = 1
     return map_array
 
 # 超参数配置
