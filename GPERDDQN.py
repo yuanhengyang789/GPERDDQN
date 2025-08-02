@@ -776,7 +776,7 @@ def run_algorithm_v1():
             steps_done += 1
             total_reward += reward
 
-            if done or step_count >= 3000:
+            if done or step_count >= 2000:
                 episode_steps.append(step_count)
                 total_rewards.append(total_reward)
                 break
