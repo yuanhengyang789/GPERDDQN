@@ -47,11 +47,16 @@ def generate_map(size=20, obstacle_ratio=0.2):
     map_array[18, 15] = 1
     map_array[18, 16] = 1
     map_array[19, 13] = 1
+
     # 示例 8：你可以添加其他障碍物
     map_array[15, 16] = 1
     map_array[15, 17] = 1
     map_array[15, 18] = 1
     map_array[15, 19] = 1
+    map_array[14, 16] = 1
+    map_array[14, 17] = 1
+    map_array[14, 18] = 1
+    map_array[14, 19] = 1
     # 示例 9：你可以添加其他障碍物
     map_array[5, 17] = 1
     map_array[5, 18] = 1
