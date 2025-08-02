@@ -73,6 +73,7 @@ def generate_map(size=20, obstacle_ratio=0.2):
     map_array[5, 17] = 1
     map_array[5, 18] = 1
     map_array[5, 19] = 1
+
     # 示例 10：你可以添加其他障碍物
     map_array[5, 0] = 1
     map_array[5, 1] = 1
@@ -122,8 +123,23 @@ def generate_map(size=20, obstacle_ratio=0.2):
     # 示例 19：你可以添加其他障碍物
     map_array[12, 8] = 1
     map_array[12, 9] = 1
-    return map_array
+    map_array[12, 5] = 1
+    map_array[13, 5] = 1
+    map_array[12, 6] = 1
+    map_array[13, 6] = 1
 
+    map_array[6, 11] = 1
+    map_array[7, 11] = 1
+    map_array[8, 11] = 1
+    map_array[6, 9] = 1
+    map_array[7, 9] = 1
+    map_array[8, 9] = 1
+
+    map_array[4, 4] = 1
+    map_array[4, 3] = 1
+    map_array[5, 4] = 1
+    map_array[5, 3] = 1
+    return map_array
 # 超参数配置
 BATCH_SIZE = 64
 GAMMA = 0.9
