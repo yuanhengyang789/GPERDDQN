@@ -13,52 +13,20 @@ import scipy.interpolate as interpolate
 import matplotlib.pyplot as plt
 
 def generate_map(size=20, obstacle_ratio=0.2):
-    def is_path_exists(map_array, start, end):
-        """使用BFS检查是否存在可达路径"""
-        queue = Queue()
-        visited = set()
-        queue.put(start)
-        visited.add(start)
-        
-        while not queue.empty():
-            current = queue.get()
-            if current == end:
-                return True
-                
-            for dr, dc in [(-1,0), (1,0), (0,-1), (0,1)]:
-                nr, nc = current[0] + dr, current[1] + dc
-                if (0 <= nr < size and 0 <= nc < size and 
-                    (nr,nc) not in visited and map_array[nr,nc] == 0):
-                    queue.put((nr,nc))
-                    visited.add((nr,nc))
-        return False
+    # 固定地图初始化
+    map_array = np.zeros((size, size), dtype=np.float32)
+    start_pos = (size - 1, 0)
+    target_pos = (0, size - 1)
 
-    while True:
-        # 初始化空地图
-        map_array = np.zeros((size, size), dtype=np.float32)
-        
-        # 设置起点和终点
-        start_pos = (size-1, 0)  # 左下角
-        target_pos = (0, size-1)  # 右上角
-        
-        # 随机放置障碍物，但避开起点和终点
-        num_obstacles = int(size * size * obstacle_ratio)
-        possible_positions = [(r,c) for r in range(size) for c in range(size)
-                            if (r,c) != start_pos and (r,c) != target_pos]
-        
-        obstacle_positions = np.random.choice(
-            len(possible_positions),
-            size=num_obstacles,
-            replace=False
-        )
-        
-        for idx in obstacle_positions:
-            r, c = possible_positions[idx]
-            map_array[r,c] = 1
-            
-        # 检查是否存在可达路径
-        if is_path_exists(map_array, start_pos, target_pos):
-            return map_array
+    # 固定障碍物：例如，竖直障碍墙
+    for i in range(5, 15):
+        map_array[i, 10] = 1  # 在第10列放置一堵墙
+
+    # 给障碍开一个口（确保有路径）
+    map_array[10, 10] = 0
+
+    return map_array
+
 # 超参数配置
 BATCH_SIZE = 64
 GAMMA = 0.9
